@@ -21,6 +21,7 @@ import AdminDashboard from './pages/AdminDashboard';
 import Komunitas from './pages/Komunitas';
 import GroupRoom from './components/chat/GroupRoom';
 import ChatPage from './pages/ChatPage';
+import EventPage from './pages/Event';
 import CommunityPage from './pages/CommunityPage';
 import ScholarshipsPage from './pages/ScholarshipsPage';
 import Beasiswa from './pages/Beasiswa';
@@ -80,6 +81,7 @@ function AppContent() {
         <Route path="/ai-chat" element={<AiChat />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/event" element={<EventPage />} />
         <Route path="/profile" element={
           <ProtectedRoute>
             <Profile />
