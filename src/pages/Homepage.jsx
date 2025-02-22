@@ -1,22 +1,20 @@
 import '@fontsource/plus-jakarta-sans';
-import { useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { HiOutlineArrowCircleDown, HiOutlineHeart, HiOutlineUserGroup } from 'react-icons/hi';
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaGithub } from 'react-icons/fa';
-import { HiMail, HiPhone, HiLocationMarker } from 'react-icons/hi';
+import { useState } from 'react';
+import { FaFacebookF, FaGithub, FaInstagram, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
+import { HiLocationMarker, HiMail, HiOutlineHeart, HiOutlineUserGroup, HiPhone } from 'react-icons/hi';
 import { useNavigate } from 'react-router-dom';
-import money from '../assets/needed/money.png';
+import BIImg from '../assets/beasiswa/BI.png';
+import LPDPImg from '../assets/beasiswa/LPDP.png';
+import MEXTImg from '../assets/beasiswa/MEXT.png';
 import GGon from '../assets/G-Gon.png';
+import gencerdasLogo from '../assets/gencerdaslog.png';
+import hutanRimbaImg from '../assets/HutanRimba.jpg';
+import kampongImg from '../assets/kampong.png';
 import book from '../assets/needed/book.png';
 import friends from '../assets/needed/friend.png';
-import MEXTImg from '../assets/beasiswa/MEXT.png';
-import LPDPImg from '../assets/beasiswa/LPDP.png';
-import BIImg from '../assets/beasiswa/BI.png';
-import kampongImg from '../assets/kampong.png';
-import hutanRimbaImg from '../assets/HutanRimba.jpg';
-import gencerdasLogo from '../assets/gencerdaslog.png';
+import money from '../assets/needed/money.png';
 import priaSigma from '../assets/PriaSigma.png';
-import wanitaSigma from '../assets/WanitaSigma.png';
 
 function Homepage() {
   const navigate = useNavigate();
@@ -107,15 +105,25 @@ function Homepage() {
 
   return (
     <div className="bg-[#FAB12F] font-['Plus_Jakarta_Sans']">
-      <div className="min-h-screen relative overflow-hidden  bg-[#FAB12F]">
+      <div className="min-h-screen relative overflow-hidden bg-[#FAB12F]">
         <div className="relative z-10">
           {/* Hero Section */}
-          <section className="pt-32 lg:pt-32 pb-16 px-4 bg-[#FAB12F] ">
+          <section
+              className="pt-32 lg:pt-32 px-4 bg-[#FAB12F] flex items-center flex-col lg:flex-row lg:justify-between gap-10 lg:gap-48 relative"
+          >
             {/* Main Content (Text & G'GON) */}
-            <div className="w-2/3 flex items-center justify-between gap-10 mx-auto">
-              <div className="w-1/2 flex justify-end">
-                <img src={priaSigma} alt="Pria Sigma" className="max-w-full h-auto scale-x-[-1]"/>
-              </div>
+            <motion.div
+                initial={{opacity: 0, x: -50}}
+                animate={{opacity: 1, x: 0}}
+                transition={{duration: 0.8, ease: "easeOut"}}
+                className="w-1/2 flex justify-center lg:ml-20 lg:mb-0 mb-[365px]"
+            >
+              <img src={priaSigma}
+                   alt="Pria Sigma"
+                   className="absolute lg:relative w-72 lg:w-[90%] h-auto scale-x-[-1]"
+              />
+            </motion.div>
+            <div className="w-2/3 mx-auto">
               <motion.div
                   initial={{opacity: 0, y: 20}}
                   animate={{opacity: 1, y: 0}}
@@ -143,6 +151,20 @@ function Homepage() {
                     >
                       Ayo berinteraksi!
                     </motion.button>
+                    <motion.button
+                        whileHover={{scale: 1.05}}
+                        whileTap={{scale: 0.95}}
+                        onClick={() => {
+                          const beasiswaSection = document.getElementById("beasiswa");
+                          if (beasiswaSection) {
+                            beasiswaSection.scrollIntoView({behavior: "smooth"});
+                          }
+                        }}
+                        className="w-[180px] lg:w-[205px] mt-2 border-2 border-white fill-transparent hover:bg-gray-50 hover:text-[#FF8A4C] text-white px-6 lg:px-8 py-2 lg:py-3 rounded-full font-semibold transition-colors text-base lg:text-lg"
+                    >
+                      Cari Beasiswa!
+                    </motion.button>
+
                   </motion.div>
 
                   {/* Mascot Image (G'GON) */}
@@ -150,84 +172,50 @@ function Homepage() {
                       initial={{opacity: 0, scale: 0.8}}
                       animate={{opacity: 1, scale: 1}}
                       transition={{duration: 0.6, delay: 0.6}}
-                      className="w-[50%] lg:w-[45%] flex justify-center"
+                      className="w-[50%] lg:w-[45%] flex justify-center relative overflow-visible"
                   >
                     <img
                         src={GGon}
                         alt="G'GON Mascot"
-                        className="w-full h-auto object-contain transform scale-90 lg:scale-110"
+                        className="w-full h-auto object-contain scale-[1.4] lg:scale-[1.8] rotate-[20deg]"
                     />
                   </motion.div>
                 </div>
               </motion.div>
-              <div className="w-1/2 flex justify-end">
-                <img src={wanitaSigma} alt="Wanita Sigma" className="max-w-full h-auto"/>
-              </div>
             </div>
-            {/*/!* Updated button container positioning and styling *!/*/}
-            {/*<div className="absolute left-1/2 -translate-x-1/2 top-[40%] z-10 flex flex-col items-center">*/}
-              {/*  <motion.div*/}
-              {/*      initial={{opacity: 0, y: -20}}*/}
-              {/*      animate={{opacity: 1, y: 0}}*/}
-              {/*      transition={{duration: 0.6, delay: 0.3}}*/}
-              {/*      className="text-white text-3xl font-bold mb-4"*/}
-              {/*  >*/}
-              {/*    Scroll untuk melanjutkan!*/}
-              {/*  </motion.div>*/}
-              {/*  <motion.div*/}
-              {/*      className="w-10 h-16 border-4 border-white rounded-full flex justify-center items-start relative"*/}
-              {/*  >*/}
-              {/*    <motion.div*/}
-              {/*        className="w-3 h-3 bg-white rounded-full"*/}
-              {/*        animate={{y: [5, 40, 5]}}*/}
-              {/*        transition={{*/}
-              {/*          duration: 1,*/}
-              {/*          repeat: Infinity,*/}
-              {/*          ease: "easeInOut"*/}
-              {/*        }}*/}
-              {/*    />*/}
-              {/*  </motion.div>*/}
-              {/*</div>*/}
           </section>
-            <div className="w-full bg-[#FAB12F]">
-              <svg
-                  viewBox="0 90 1450 700"
-                  className="translate-y-[1px] relative z-1"
-                  preserveAspectRatio="none"
-              >
-                {/* First wave - lighter orange */}
-                <path
-                    d="M0,100
-                     C960,50 1100,1100 1500,400
-                     L1500,1000
-                     L0,400
-                     Z"
-                    fill="#F1A41A"
-                    opacity="0.6"
-                />
 
-                {/* Second wave - darker orange */}
-                <path
-                    d="M0,190
-                     C800,80 1090,1150 1490,500
-                     L1450,1000
-                     L0 1000,400
-                     Z"
-                    fill="#FA812F"
-                />
-              </svg>
-            </div>
+          <div className="w-full bg-transparent relative mt-10 lg:mt-[-80px]">
+            {/* SVG Waves */}
+            <svg
+                viewBox="0 90 1450 700"
+                className="translate-y-[1px] relative z-1"
+                preserveAspectRatio="none"
+            >
+              {/* First wave - lighter orange */}
+              <path
+                  d="M0,100 C960,50 1100,1100 1500,400 L1500,1000 L0,400 Z"
+                  fill="#F1A41A"
+              />
+              {/* Second wave - darker orange */}
+              <path
+                  d="M0,190 C800,80 1090,1150 1490,500 L1450,1000 L0 1000,400 Z"
+                  fill="#FA812F"
+              />
+            </svg>
+          </div>
 
           {/* Scholarship Section */}
           <section className="bg-[#FA812F] pt-0 pb-16 relative z-10">
-            <div className="container mx-auto px-4">
+            <div className="container mx-auto px-4" id="beasiswa">
               <motion.div
                   initial={{opacity: 0, y: 20}}
                   whileInView={{opacity: 1, y: 0}}
                   transition={{duration: 0.6}}
                   viewport={{once: true}}
+                  className="pt-24 text-center"
               >
-                <h2 className="text-white text-3xl font-bold mb-3">Ayo cari beasiswa mu!</h2>
+                <h2 className="text-white text-5xl font-bold mb-3">Ayo cari beasiswa mu!</h2>
                 <p className="text-white text-xl mb-8">Temukan beasiswa yang cocok untuk diri kamu!</p>
               </motion.div>
 
@@ -407,7 +395,7 @@ function Homepage() {
                   <img
                       src={GGon}
                       alt="Chat AI"
-                      className="absolute hidden lg:block pt-28 rotate-12 pl-12 right-0 w-48 h-auto transform translate-x-8 group-hover:scale-110 transition-transform duration-300 z-20"
+                      className="absolute bottom-0 top-36 lg:top-[105px] right-0 w-44 rotate-12 h-auto transform translate-x-8 translate-y-4 group-hover:scale-110 transition-transform duration-300"
                   />
                   <div className="relative z-10">
                     <div className="flex items-center space-x-3 mb-4">
@@ -449,12 +437,12 @@ function Homepage() {
                     whileHover={{y: -8, scale: 1.02}}
                     transition={{duration: 0.6}}
                     viewport={{once: true}}
-                    className="bg-[#FAB12F] rounded-[32px] p-8 relative overflow-hidden group shadow-xl hover:shadow-2xl transition-all"
+                    className="bg-[#FAB12F] rounded-[32px] p-8 relative overflow-visible group shadow-xl hover:shadow-2xl transition-all"
                 >
                   <img
                       src={book}
                       alt="Pembelajaran"
-                      className="absolute top-28 right-0 w-48 h-auto transform translate-x-8 translate-y-4 group-hover:scale-110 transition-transform duration-300"
+                      className="absolute top-32 lg:top-[100px] right-0 w-48 h-auto transform translate-x-8 translate-y-4 group-hover:scale-110 transition-transform duration-300"
                   />
                   <div className="relative z-10">
                     <div className="flex items-center space-x-3 mb-4">
@@ -494,7 +482,7 @@ function Homepage() {
                     whileHover={{y: -8, scale: 1.02}}
                     transition={{duration: 0.6}}
                     viewport={{once: true}}
-                    className="bg-[#FAB12F] rounded-[32px] p-8 relative overflow-hidden group shadow-xl hover:shadow-2xl transition-all"
+                    className="bg-[#FAB12F] rounded-[32px] p-8 relative overflow-visible group shadow-xl hover:shadow-2xl transition-all"
                 >
                   <div className="relative z-10">
                     <div className="flex items-center space-x-3 mb-4">
@@ -526,7 +514,7 @@ function Homepage() {
                   <img
                       src={friends}
                       alt="Komunitas"
-                      className="absolute bottom-0 right-0 w-48 h-auto transform translate-x-8 translate-y-4 group-hover:scale-110 transition-transform duration-300"
+                      className="absolute bottom-0 right-5 w-40 h-auto transform translate-x-8 translate-y-4 group-hover:scale-110 transition-transform duration-300"
                   />
                   <div className="absolute top-4 right-4 w-24 h-24 bg-white/10 rounded-full blur-xl"/>
                   <div className="absolute bottom-4 left-4 w-32 h-32 bg-white/10 rounded-full blur-xl"/>
@@ -539,7 +527,7 @@ function Homepage() {
                     whileHover={{y: -8, scale: 1.02}}
                     transition={{duration: 0.6}}
                     viewport={{once: true}}
-                    className="bg-[#FAB12F] rounded-[32px] p-8 relative overflow-hidden group shadow-xl hover:shadow-2xl transition-all"
+                    className="bg-[#FAB12F] rounded-[32px] p-8 relative overflow-visible group shadow-xl hover:shadow-2xl transition-all"
                 >
                   <div className="relative z-10">
                     <div className="flex items-center space-x-3 mb-4">
@@ -571,7 +559,7 @@ function Homepage() {
                   <img
                       src={money}
                       alt="Bantuan"
-                      className="absolute bottom-0 right-0 w-48 h-auto transform translate-x-8 translate-y-4 group-hover:scale-110 transition-transform duration-300"
+                      className="absolute bottom-0 right-0 top-28 lg:top-[80px] w-48 h-auto transform translate-x-8 translate-y-4 group-hover:scale-110 transition-transform duration-300"
                   />
                   <div className="absolute top-4 right-4 w-24 h-24 bg-white/10 rounded-full blur-xl"/>
                   <div className="absolute bottom-4 left-4 w-32 h-32 bg-white/10 rounded-full blur-xl"/>
@@ -582,59 +570,53 @@ function Homepage() {
 
           {/* Landscape Section - Updated for better responsiveness */}
           <section
-              className="relative bg-[#FA812F] pt-[200px] sm:pt-[300px] md:pt-[800px] lg:pt-[1500px] pb-16 sm:pb-32 md:pb-56 overflow-hidden">
-            <div className="relative h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px]">
-              {/* Mountain Background - Improved mobile scaling */}
-              <div className="absolute bottom-0 left-0 right-0 z-0">
+              className="relative bg-[#FA812F] pt- lg:pt-96 overflow-hidden"
+          >
+            <div className="relative h-96 lg:h-[500px]">
+              <div className="absolute bottom-[-600px] left-0 right-0 z-0 pb-96 md:pb-60 lg:pb-0">
                 <img
                     src={kampongImg}
                     alt="Mountain Background"
-                    className="w-full h-auto object-cover object-center transform scale-120 translate-y-1/5 md:translate-y-[30%] lg:translate-y-[40%]"
+                      className="max-w-full h-auto object-cover object-center"
                 />
               </div>
-
-              {/* Bottom Wave - Adjusted for mobile */}
-              <div className="absolute bottom-0 left-0 right-0 z-10">
-                <svg
-                    viewBox="0 80 1500 700"
-                    className="translate-y-[150px] md:translate-y-[200px] lg:translate-y-[300px] w-full"
-                    preserveAspectRatio="none"
-                >
-                  {/* First wave - lighter color */}
-                  <path
-                      d="M0,150 C960,50 1100,1100 1590,400 L1500,1500 L0,400 Z"
-                      fill="#FFC298"
-                      opacity="1"
-                  />
-
-                  {/* Second wave - solid color */}
-                  <path
-                      d="M0,200 C900,80 1090,1150 1590,500 L1450,1500 L0,1000 Z"
-                      fill="#FFFFFF"
-                  />
-                </svg>
-              </div>
+            </div>
+              {/* Bottom Wave */}
+            <div className="z-10 mt-[-200px] mb-[40px] pb-16">
+              <svg
+                  viewBox="0 80 1500 700"
+                  className="w-full transform translate-y-12 sm:translate-y-16 md:translate-y-20 lg:translate-y-28"
+                  preserveAspectRatio="none"
+              >
+                {/* First wave - lighter color */}
+                <path
+                    d="M0,150 C960,50 1100,1100 1590,400 L1500,1500 L0,400 Z"
+                    fill="#FFC298"
+                    opacity="1"
+                />
+                {/* Second wave - solid color */}
+                <path
+                    d="M0,200 C900,80 1090,1150 1590,500 L1450,1500 L0,1000 Z"
+                    fill="#FFFFFF"
+                />
+              </svg>
             </div>
           </section>
 
           {/* Forest Support Section - Enhanced mobile layout */}
-          <section className="relative bg-white">
-            <div className="relative w-full">
-              {/* Forest Background with Responsive Height */}
+          <section className="relative">
+            <div className="relative">
               <motion.div
-                  className="relative h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh]"
-                  style={{y: forestImageY}}
+                  className="relative h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[160vh]"
               >
                 <img
                     src={hutanRimbaImg}
                     alt="Mountain Forest Landscape"
                     className="w-full h-full object-cover"
                 />
-
                 {/* Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"/>
               </motion.div>
-
               {/* Content Container - Improved mobile positioning */}
               <motion.div
                   className="absolute top-1/2 left-0 transform -translate-y-1/2 w-full px-4 sm:px-8 md:px-12 lg:px-24"
@@ -708,7 +690,7 @@ function Homepage() {
             <div className="relative">
               <svg
                   viewBox="0 0 1440 120"
-                  className="w-full h-[60px] md:h-auto fill-white"
+                  className="absolute z-10 bottom-0 w-full h-[60px] md:h-auto fill-white"
                   preserveAspectRatio="none"
               >
                 <path
@@ -741,7 +723,7 @@ function Homepage() {
                   <span className="text-sm">Jakarta, Indonesia</span>
                 </div>
                 <div className="flex items-center space-x-3 text-gray-600">
-                  <HiPhone className="h-5 w-5 text-orange-500"/>
+                <HiPhone className="h-5 w-5 text-orange-500"/>
                   <span className="text-sm">+62 123 456 789</span>
                 </div>
                 <div className="flex items-center space-x-3 text-gray-600">
@@ -880,4 +862,4 @@ function Homepage() {
   );
 }
 
-export default Homepage; 
+export default Homepage;
