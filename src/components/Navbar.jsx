@@ -43,11 +43,13 @@ function Navbar() {
         className={`
           max-w-5xl mx-auto
           transition-all duration-300 ease-in-out
-          ${isScrolled ? 'rounded-[24px] shadow-lg' : 'rounded-full'}
+          ${isScrolled ? 'rounded-[24px] shadow-lg' : 'rounded-[24px]'}
           overflow-hidden
           ${isScrolled 
             ? 'bg-[#FAB12F]/85 backdrop-blur-md' 
-            : 'bg-transparent'
+            : 'bg-[#FAB12F]/85 backdrop-blur-md'
+                // [#FAB12F]
+                // [#FFB827]
           }
           ${isMenuOpen && !isScrolled ? 'bg-[#FAB12F]' : ''}
         `}
@@ -72,6 +74,7 @@ function Navbar() {
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center space-x-8">
               {[
+                { path: '/', label:'Home'},
                 { path: '/ai-chat', label: 'G-Gon' },
                 { path: '/komunitas', label: 'Komunitas' },
                 { path: '/courses', label: 'Courses' },
@@ -167,6 +170,7 @@ function Navbar() {
               >
                 <div className="py-4 border-t border-orange-400/30 space-y-4 mt-3">
                   {[
+                    { path: '/', label:'Home'},
                     { path: '/ai-chat', label: 'G-Gon' },
                     { path: '/komunitas', label: 'Komunitas' },
                     { path: '/ruang-belajar', label: 'Ruang Belajar' },

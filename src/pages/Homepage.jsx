@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useState } from 'react';
 import { FaFacebookF, FaGithub, FaInstagram, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
 import { HiLocationMarker, HiMail, HiOutlineHeart, HiOutlineUserGroup, HiPhone } from 'react-icons/hi';
-import { useNavigate } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import BIImg from '../assets/beasiswa/BI.png';
 import LPDPImg from '../assets/beasiswa/LPDP.png';
 import MEXTImg from '../assets/beasiswa/MEXT.png';
@@ -15,6 +15,7 @@ import book from '../assets/needed/book.png';
 import friends from '../assets/needed/friend.png';
 import money from '../assets/needed/money.png';
 import priaSigma from '../assets/PriaSigma.png';
+import Mascot from '../assets/Mascot.png';
 
 function Homepage() {
   const navigate = useNavigate();
@@ -144,13 +145,15 @@ function Homepage() {
                       <p className="text-base lg:text-lg mb-8 leading-relaxed text-white">
                         Kedepannya aku akan membantu kamu untuk belajar dan mencari beasiswa
                       </p>
+                        <Link to="/ai-chat">
                       <motion.button
                           whileHover={{scale: 1.05}}
                           whileTap={{scale: 0.95}}
                           className="bg-white hover:bg-gray-50 text-[#FF8A4C] px-6 lg:px-8 py-2 lg:py-3 rounded-full font-semibold transition-colors text-base lg:text-lg"
                       >
-                        Ayo berinteraksi!
+                          Ayo berinteraksi!
                       </motion.button>
+                        </Link>
                       <motion.button
                           whileHover={{scale: 1.05}}
                           whileTap={{scale: 0.95}}
@@ -370,7 +373,8 @@ function Homepage() {
             </section>
 
             {/* Innovation Section */}
-            <section className="bg-[#FA812F] py-16 relative z-10">
+            <section className="bg-[#FA812F] pb-60 py-16 relative z-10">
+              {/*bg-gradient-to-b from-[#FA812F] from-40% to-[#ffeee3]*/}
               <div className="container mx-auto px-4">
                 <motion.h2
                     initial={{opacity: 0, y: 20}}
@@ -569,20 +573,58 @@ function Homepage() {
             </section>
 
             {/* Landscape Section - Updated for better responsiveness */}
-            <section
-                className="relative bg-[#FA812F] pt- lg:pt-96 overflow-hidden"
-            >
-              <div className="relative h-96 lg:h-[500px]">
-                <div className="absolute bottom-[-600px] left-0 right-0 z-0 pb-96 md:pb-60 lg:pb-0">
-                  <img
-                      src={kampongImg}
-                      alt="Mountain Background"
-                      className="max-w-full h-auto object-cover object-center"
-                  />
-                </div>
+            {/*<section*/}
+            {/*    className="relative bg-gradient-to-r from- via-purple-500 to-pink-500  i pt- lg:pt-96 overflow-hidden"*/}
+            {/*>*/}
+            {/*  <div className="relative h-96 lg:h-[500px]">*/}
+            {/*    <div className="absolute bottom-[-600px] left-0 right-0 z-0 pb-96 md:pb-60 lg:pb-0">*/}
+            {/*      <img*/}
+            {/*          src={kampongImg}*/}
+            {/*          alt="Mountain Background"*/}
+            {/*          className="max-w-full h-auto object-cover object-center"*/}
+            {/*      />*/}
+            {/*    </div>*/}
+            {/*  </div>*/}
+            {/*  /!* Bottom Wave *!/*/}
+            {/*  <div className="z-10 mt-[-200px] mb-[40px] pb-16">*/}
+            {/*    <svg*/}
+            {/*        viewBox="0 80 1500 700"*/}
+            {/*        className="w-full transform translate-y-12 sm:translate-y-16 md:translate-y-20 lg:translate-y-28"*/}
+            {/*        preserveAspectRatio="none"*/}
+            {/*    >*/}
+            {/*      /!* First wave - lighter color *!/*/}
+            {/*      <path*/}
+            {/*          d="M0,150 C960,50 1100,1100 1590,400 L1500,1500 L0,400 Z"*/}
+            {/*          fill="#FFC298"*/}
+            {/*          opacity="1"*/}
+            {/*      />*/}
+            {/*      /!* Second wave - solid color *!/*/}
+            {/*      <path*/}
+            {/*          d="M0,200 C900,80 1090,1150 1590,500 L1450,1500 L0,1000 Z"*/}
+            {/*          fill="#FFFFFF"*/}
+            {/*      />*/}
+            {/*    </svg>*/}
+            {/*  </div>*/}
+            {/*</section>*/}
+
+            {/* Forest Support Section - Enhanced mobile layout */}
+            <section className="relative">
+              {/*Bagian Gelombang Mascot*/}
+              <div className="w-full h-full relative bg-transparent">
+                <motion.img
+                    src={Mascot}
+                    alt="mascot"
+                    initial={{opacity: 0, scale: 0.8, y: -50}}
+                    animate={{opacity: 1, scale: 1, y: 0}}
+                    transition={{duration: 0.8, ease: "easeOut"}}
+                    className=" mr-20
+                      absolute top-[-5%] right-[-10%] w-[40vw]
+                      max-w-[200px] sm:max-w-[300px] md:max-w-[400px]
+                      lg:max-w-[600px] xl:max-w-[900px]
+                      h-auto object-contain"
+                />
               </div>
-              {/* Bottom Wave */}
-              <div className="z-10 mt-[-200px] mb-[40px] pb-16">
+              <div className="pb-12 lg:pb-20 bg-gradient-to-b from-[#FA812F] to-red-500">
                 <svg
                     viewBox="0 80 1500 700"
                     className="w-full transform translate-y-12 sm:translate-y-16 md:translate-y-20 lg:translate-y-28"
@@ -591,23 +633,19 @@ function Homepage() {
                   {/* First wave - lighter color */}
                   <path
                       d="M0,150 C960,50 1100,1100 1590,400 L1500,1500 L0,400 Z"
-                      fill="#FFC298"
-                      opacity="1"
-                  />
-                  {/* Second wave - solid color */}
-                  <path
-                      d="M0,200 C900,80 1090,1150 1590,500 L1450,1500 L0,1000 Z"
-                      fill="#FFFFFF"
-                  />
-                </svg>
-              </div>
-            </section>
-
-            {/* Forest Support Section - Enhanced mobile layout */}
-            <section className="relative">
-              <div className="relative">
+                        fill="#FFC298"
+                        opacity="1"
+                    />
+                    {/* Second wave - solid color */}
+                    <path
+                        d="M0,200 C900,80 1090,1150 1590,500 L1450,1500 L0,1000 Z"
+                        fill="#FFFFFF"
+                    />
+                  </svg>
+                </div>
+              <div className="relative bg-[#FA812F]">
                 <motion.div
-                    className="relative h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[160vh]"
+                    className="relative md:h-[60vh] lg:h-[70vh] xl:h-[140vh]"
                 >
                   <img
                       src={hutanRimbaImg}
@@ -619,7 +657,7 @@ function Homepage() {
                 </motion.div>
                 {/* Content Container - Improved mobile positioning */}
                 <motion.div
-                    className="absolute top-1/2 left-0 transform -translate-y-1/2 w-full px-4 sm:px-8 md:px-12 lg:px-24"
+                    className="absolute top-1/4 left-0 transform -translate-y-1/2 w-full px-4 sm:px-8 md:px-12 lg:px-24"
                     style={{opacity: textOpacity, y: textY}}
                 >
                   <div className="max-w-xl backdrop-blur-sm rounded-3xl p-6 sm:p-8 md:p-10 lg:p-12">
@@ -627,7 +665,7 @@ function Homepage() {
                         initial={{opacity: 0, x: -20}}
                         whileInView={{opacity: 1, x: 0}}
                         transition={{duration: 0.6}}
-                        className="space-y-6 md:space-y-8"
+                        className="space-y-4 md:space-y-8"
                     >
                       <div className="flex items-center space-x-4">
                         <div className="p-2 md:p-3 bg-orange-500/20 rounded-xl">
@@ -654,7 +692,7 @@ function Homepage() {
                       </div>
 
                       {/* Stats - Improved mobile grid */}
-                      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 pt-6 md:pt-8">
+                      <div className="grid grid-cols-4 md:grid-cols-3 gap-4 md:gap-8 md:pt-8">
                         {/* Stats items with responsive text sizes */}
                         <motion.div
                             className="text-center"
@@ -687,7 +725,7 @@ function Homepage() {
               </div>
 
               {/* Wave Separator - Adjusted height for mobile */}
-              <div className="relative">
+              <div className="relative mt-5">
                 <svg
                     viewBox="0 0 1440 120"
                     className="absolute z-10 bottom-0 w-full h-[60px] md:h-auto fill-white"
